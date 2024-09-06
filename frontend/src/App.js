@@ -5,10 +5,11 @@ import About from './components/About';
 import AuthComponent from './components/auth/AuthComponent';
 import NotFound from './components/NotFound';
 import Layout from './components/Layout';
-import axios from 'axios';
+import PrivateRoute from './components/PrivateRoute';
 import { useCookies } from './components/auth/useCookies';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
+import axios from 'axios';
 
 function App() {
 
@@ -29,7 +30,7 @@ axios.interceptors.response.use(
       removeCookies('token'); 
 
       // Redirect to login page
-      navigate('/login');
+      navigate('/auth');
 
       // Optionally, show a toast or notification to inform the user
       toast({
@@ -53,7 +54,7 @@ axios.interceptors.response.use(
     <Routes>
       
       <Route path='/auth' exact={true} element={<AuthComponent/>}/> 
-      <Route path='/' element={<Layout/>}> 
+      <Route path='/' element={<PrivateRoute><Layout /></PrivateRoute>}> 
         <Route index path='/home' element={<HomeComponent/>}/>
         <Route path='/about' element={<About/>}/>
       </Route>

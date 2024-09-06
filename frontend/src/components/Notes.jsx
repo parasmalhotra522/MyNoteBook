@@ -1,5 +1,5 @@
 import { Container, Spinner, Text, SimpleGrid, Flex, Heading } from '@chakra-ui/react'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import Note from './Note';
 import NotesContext from '../context/notes/notes.context';
 import AddNote from './AddNote';
@@ -8,9 +8,10 @@ import AddNote from './AddNote';
 const Notes = () => {
   const { notes, isPending, isError } = useContext(NotesContext);
 
-  useEffect(() => {
-    console.log('notes', notes);
-  }, [])
+  // useEffect(() => {
+  //   console.log('notes', notes);
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
 
 
   if (isError) return

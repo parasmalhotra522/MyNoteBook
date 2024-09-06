@@ -1,15 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react'
-import NavigationBar from './NavigationBar';
-
 import Notes from './Notes';
 import NoteContext from '../context/notes/notes.context';
-import { Outlet, useNavigate } from 'react-router';
-import { Spinner, useToast } from '@chakra-ui/react';
+import { useNavigate } from 'react-router';
+import { Spinner } from '@chakra-ui/react';
 
 const HomeComponent = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
-    const toast = useToast();
+    // const toast = useToast();
     const {currentUser} =  useContext(NoteContext);
     useEffect(() => {
         // console.log("---- Current user in home component", currentUser);
